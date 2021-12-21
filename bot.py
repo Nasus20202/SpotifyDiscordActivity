@@ -1,21 +1,13 @@
 import discord
 from dotenv import load_dotenv
 import os
-import requests
-import json
+import spotify
 
 load_dotenv()
-headers = {"Authorization" : "Bearer " + os.environ["SPOTIFY"]}
 
-def get_current_spotify_info():
-    response = requests.get("https://api.spotify.com/v1/me/player/currently-playing?market=PL", headers=headers)
-    data = response.json()
-    return data
-
-data = get_current_spotify_info()
-
-#print(json.dumps(data, indent=4))
-print(data["item"]["artists"][0]["name"])
+print(spotify.get_response_code())
+print(spotify.get_current_artists())
+print(spotify.get_current_track())
 
 
 client = discord.Client()
