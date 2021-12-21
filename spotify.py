@@ -16,7 +16,6 @@ def refresh_access_token():
     )
     response = requests.get(os.environ["TOKEN_GENERATOR_SERVER"] + '?refresh_token=' + refresh_token)
     os.environ["SPOTIFY"] = response.json()["access_token"]
-    print("New:", os.environ["SPOTIFY"])
 
 refresh_access_token()
 
@@ -34,7 +33,6 @@ def __milis_to_time__(miliseconds):
 
 def get_current_spotify_info():
     response = requests.get("https://api.spotify.com/v1/me/player/currently-playing?market=PL", headers= {"Authorization" : "Bearer " + os.environ["SPOTIFY"]})
-    print("Using:", os.environ["SPOTIFY"])
     if(response.status_code != 200):
         return [response.status_code, {}]
     return [response.status_code, response.json()]
