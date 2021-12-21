@@ -50,6 +50,13 @@ def get_album_covers():
         images.append(image["url"])
     return images
 
+def get_milliseconds():
+    data = get_current_spotify_info()
+    if(data[0]!=200):
+        return 0
+    else:
+        return data[1]["progress_ms"]
+
 def get_progress():
     data = get_current_spotify_info()
     if(data[0]!=200):

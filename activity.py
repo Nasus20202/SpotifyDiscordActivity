@@ -38,6 +38,10 @@ def set_status(status):
     data = '{"custom_status":{"text":"'+str(status)+'"}}'
     response = requests.patch('https://discord.com/api/v9/users/@me/settings', headers=headers, cookies=cookies, data=data)
 
+def set_status(status, emoji):
+    data = '{"custom_status":{"text":"'+str(status)+'", "emoji_name":"'+emoji+'"}}'
+    response = requests.patch('https://discord.com/api/v9/users/@me/settings', headers=headers, cookies=cookies, data=data.encode('utf-8'))
+
 def clear_status():
     data = '{"custom_status":null}'
     response = requests.patch('https://discord.com/api/v9/users/@me/settings', headers=headers, cookies=cookies, data=data)
