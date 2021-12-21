@@ -8,6 +8,9 @@ load_dotenv()
 print(spotify.get_response_code())
 print(spotify.get_current_artists())
 print(spotify.get_current_track())
+print(spotify.get_album_covers())
+print(spotify.get_progress())
+print(spotify.get_duration())
 
 
 client = discord.Client()
