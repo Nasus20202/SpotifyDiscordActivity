@@ -41,6 +41,7 @@ async def thread():
     timer = spotify.get_milliseconds()
     while True:
         timer = await update_activity(timer)
+        spotify.refresh_access_token()
 
 async def set_track_as_activity():
     presence = spotify.get_current_track()
