@@ -18,7 +18,13 @@ client = discord.Client()
 
 async def update_activity():
     await set_track_as_activity()
+    await asyncio.sleep(10)
+    await set_artists_as_activity()
+    await asyncio.sleep(10)
 
+async def thread():
+    while True:
+        await update_activity()
 
 async def set_track_as_activity():
     presence = spotify.get_current_track()
@@ -35,7 +41,14 @@ async def set_artists_as_activity():
 @client.event
 async def on_ready():
     print('Logged into Discord as {0.user}'.format(client))
-    await update_activity()
+    loop = asyncio.get_event_loop()
+    
+    task = loop.create_task(thread())
+    try:
+        loop.run_until_complete(task)
+    except asyncio.CancelledError:
+        pass
+
 
 
 client.run(os.environ["TOKEN"], bot=False)
