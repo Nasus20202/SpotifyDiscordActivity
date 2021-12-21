@@ -21,20 +21,23 @@ nest_asyncio.apply()
 notes = ['\U0001f3b5', '\U0001f3b6']
 
 async def update_activity(timer):
-    oldTimer = timer
-    await asyncio.sleep(1)
-    timer = spotify.get_milliseconds()
-    if(math.fabs(oldTimer - timer) < 100):
-        activity.clear_status()
-    else:
-        await set_artists_as_activity()
-    oldTimer = timer
-    await asyncio.sleep(1)
-    timer = spotify.get_milliseconds()
-    if(math.fabs(oldTimer - timer) < 100):
-        activity.clear_status()
-    else:
-        await set_track_as_activity()
+    n = 3
+    for i in range(n):
+        oldTimer = timer
+        await asyncio.sleep(0.5)
+        timer = spotify.get_milliseconds()
+        if(math.fabs(oldTimer - timer) < 100):
+            activity.clear_status()
+        else:
+            await set_artists_as_activity()
+    for i in range(n):
+        oldTimer = timer
+        await asyncio.sleep(0.5)
+        timer = spotify.get_milliseconds()
+        if(math.fabs(oldTimer - timer) < 100):
+            activity.clear_status()
+        else:
+            await set_track_as_activity()
     return timer
 
 async def thread():
