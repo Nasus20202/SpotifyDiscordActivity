@@ -34,7 +34,7 @@ app.use(express.static(__dirname + '/public'))
    .use(cors())
    .use(cookieParser());
 
-app.get('/login', function(req, res) {
+app.get('/', function(req, res) {
 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
@@ -98,13 +98,13 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('/#' +
+        res.redirect('/token?' +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
           }));
       } else {
-        res.redirect('/#' +
+        res.redirect('/token?' +
           querystring.stringify({
             error: 'invalid_token'
           }));
@@ -112,6 +112,11 @@ app.get('/callback', function(req, res) {
     });
   }
 });
+
+app.get('/token', function(req, res) {
+    var access_token = req.query.access_token;
+    return res.send(`<b>Your refresh token:</b> ${access_token}`);
+})
 
 app.get('/refresh_token', function(req, res) {
 
