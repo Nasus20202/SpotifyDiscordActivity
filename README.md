@@ -23,7 +23,8 @@ REDIRECT_URI=http://localhost:8888/callback
 Your Client ID and Secret can be accessed at your devloper dashboard.
 3. Now start the Node.js server
 ```
-node ./TokenGenerator/app.js
+cd ./TokenGenerator
+node ./app.js
 ```
 4. You also need your Discord user token. Here is how to obtain it: https://pcstrike.com/how-to-get-discord-token/
 5. Now create and .env file in project main folder. It should look like this:
@@ -34,6 +35,6 @@ TOKEN_GENERATOR_SERVER=http://localhost:8888/refresh_token
 ```
 6. Go to http://localhost:8888/ and log in to Spotify. Now you should receive your Spotify Refresh Token. Copy it to the .env file.
 7. Start the Python script
-```python
+```
 python ./main.py
 ```
