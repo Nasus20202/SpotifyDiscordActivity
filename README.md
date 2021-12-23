@@ -33,7 +33,7 @@ SPOTIFY_REFRESH_TOKEN=SPOTIFY_REFRESH_TOKEN
 TOKEN_GENERATOR_SERVER=http://localhost:8888/refresh_token
 ```
 6. Go to http://localhost:8888/ and login to Spotify. Now you should receive your Spotify Refresh Token. Copy it to the .env file.
-7. Start the Python script/
+7. Start the Python script
 ```python
 python ./main.py
 ```
