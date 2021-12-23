@@ -1,21 +1,25 @@
 from asyncio.subprocess import Process
-import threading
+from asyncio.tasks import sleep
+import asyncio
 import os
 import requests
 from dotenv import load_dotenv
-import nest_asyncio
-import asyncio
 
 load_dotenv()
-nest_asyncio.apply()
 
 def refresh_access_token():
     refresh_token = os.environ["SPOTIFY_REFRESH_TOKEN"]
     params = (
         ('refresh_token', refresh_token),
     )
-    response = requests.get(os.environ["TOKEN_GENERATOR_SERVER"] + '?refresh_token=' + refresh_token)
-    os.environ["SPOTIFY"] = response.json()["access_token"]
+    try:
+        response = requests.get(os.environ["TOKEN_GENERATOR_SERVER"] + '?refresh_token=' + refresh_token)
+        os.environ["SPOTIFY"] = response.json()["access_token"]
+        print("New token generated")
+    except:
+        print("Cannot refresh the token!")
+        asyncio.sleep(1)
+        refresh_access_token()
 
 refresh_access_token()
 
@@ -32,7 +36,11 @@ def __milis_to_time__(miliseconds):
     return time
 
 def get_current_spotify_info():
-    response = requests.get("https://api.spotify.com/v1/me/player/currently-playing?market=PL", headers= {"Authorization" : "Bearer " + os.environ["SPOTIFY"]})
+    try:
+        response = requests.get("https://api.spotify.com/v1/me/player/currently-playing?market=PL", headers= {"Authorization" : "Bearer " + os.environ["SPOTIFY"]})
+    except:
+        print("Cannot get data from Spotify API")
+        return [404]
     if(response.status_code != 200):
         return [response.status_code, {}]
     return [response.status_code, response.json()]

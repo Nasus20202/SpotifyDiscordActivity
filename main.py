@@ -42,14 +42,20 @@ async def update_activity(timer):
 
 async def thread():
     timer = spotify.get_milliseconds()
+    i = 0
     while True:
         timer = await update_activity(timer)
-        spotify.refresh_access_token()
+        if(i == 100):
+            spotify.refresh_access_token()
+            i = 0
+        i = i + 1
+        
+        
 
 async def set_track_as_activity():
     presence = spotify.get_current_track()
     if(presence != None):
-        activity.set_status(presence, notes[0])
+        activity.set_status(presence, notes[1])
     else:
         activity.clear_status()
     
