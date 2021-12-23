@@ -13,7 +13,8 @@ This is the upgraded, fresh look:
 
 ## How to use it?
 
-1. You will need a Spotify App. You can register one here: https://developer.spotify.com/dashboard/
+1. You will need a Spotify App. You can register one here: https://developer.spotify.com/dashboard/.
+If you are using development mode, you will have to add your account in "Users and access" tab.
 2. Create a .env file in ./TokenGenrator. It should look like this:
 ```
 CLIENT_ID=YOUR_APP_CLIENT_ID
