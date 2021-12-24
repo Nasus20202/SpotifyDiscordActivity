@@ -44,8 +44,10 @@ python ./main.py
 
 Python: 
 - python-dotenv
+- nest-asyncio
 ```
 pip install python-dotenv
+pip install nest-asyncio
 ```
 
 Node:
