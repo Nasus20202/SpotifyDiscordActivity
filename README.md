@@ -39,3 +39,20 @@ TOKEN_GENERATOR_SERVER=http://localhost:8888/refresh_token
 ```
 python ./main.py
 ```
+
+### Required libraries
+
+Python: 
+- python-dotenv
+```
+pip install python-dotenv
+```
+
+Node:
+- express
+- request
+- cors
+- cookie-parser
+- query-string
+
+Node.js packages should be installed automatically. If not, install them with npm. (npm install *package name*)
