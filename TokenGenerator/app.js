@@ -114,8 +114,9 @@ app.get('/callback', function(req, res) {
 });
 
 app.get('/token', function(req, res) {
+    var refresh_token = req.query.refresh_token;
     var access_token = req.query.access_token;
-    return res.send(`<b>Your refresh token:</b> ${access_token}`);
+    return res.send(`<b>Your refresh token:</b> ${refresh_token}<br><br><b>Your access token:</b> ${access_token}`);
 })
 
 app.get('/refresh_token', function(req, res) {
