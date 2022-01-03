@@ -11,6 +11,8 @@ This is the upgraded, fresh look:
 ![upgraded0](https://github.com/Nasus20202/SpotifyDiscordActivity/blob/main/img/upgraded0.png)
 ![upgraded1](https://github.com/Nasus20202/SpotifyDiscordActivity/blob/main/img/upgraded1.png)
 
+Works best with https://github.com/Nasus20202/SpotiTrackForDiscord 
+
 ## How to use it?
 
 1. You will need a Spotify App. You can register one here: https://developer.spotify.com/dashboard/.
