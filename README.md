@@ -13,6 +13,8 @@ This is the upgraded, fresh look:
 
 Works best with https://github.com/Nasus20202/SpotiTrackForDiscord 
 
+![demo](https://github.com/Nasus20202/SpotifyDiscordActivity/blob/main/img/demo.gif)
+
 ## How to use it?
 
 1. You will need a Spotify App. You can register one here: https://developer.spotify.com/dashboard/.
