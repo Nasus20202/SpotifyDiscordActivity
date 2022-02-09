@@ -44,7 +44,7 @@ async def update_activity(timer):
         if(math.fabs(oldTimer - timer) < 100):
             activity.clear_status()
         else:
-            await set_artists_as_activity()
+            await set_track_as_activity()
 
     #album
     for i in range(album):

@@ -24,7 +24,7 @@ def refresh_access_token():
 refresh_access_token()
 
 def __milis_to_time__(miliseconds):
-    minutes = round(miliseconds / 60000)
+    minutes = miliseconds // 60000
     seconds = round((miliseconds - minutes * 60000) / 1000)
     time = ""
     if(minutes < 10):
