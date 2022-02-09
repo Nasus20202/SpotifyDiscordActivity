@@ -10,7 +10,7 @@ headers = {
         'Authorization': os.environ["TOKEN"]
     }
 
-def set_status(status):
+def set_status_without_emoji(status):
     data = '{"custom_status":{"text":"'+str(status)+'"}}'
     try:
         response = requests.patch('https://discord.com/api/v9/users/@me/settings', headers=headers, data=data)
