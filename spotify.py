@@ -24,8 +24,8 @@ def refresh_access_token():
 refresh_access_token()
 
 def __milis_to_time__(miliseconds):
-    minutes = miliseconds // 60000
-    seconds = (miliseconds - minutes * 60000) // 1000
+    minutes = round(miliseconds / 60000)
+    seconds = round((miliseconds - minutes * 60000) / 1000)
     time = ""
     if(minutes < 10):
         time = time + '0'
@@ -73,12 +73,25 @@ def get_album_covers():
         images.append(image["url"])
     return images
 
+def get_album_name():
+    data = get_current_spotify_info()
+    if(data[0]!=200):
+        return
+    return data[1]["item"]["album"]["name"]
+
 def get_milliseconds():
     data = get_current_spotify_info()
     if(data[0]!=200):
         return 0
     else:
         return data[1]["progress_ms"]
+
+def get_duration_millis():
+    data = get_current_spotify_info()
+    if(data[0]!=200):
+        return 0
+    else:
+        return data[1]["item"]["duration_ms"]
 
 def get_progress():
     data = get_current_spotify_info()

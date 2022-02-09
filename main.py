@@ -21,8 +21,13 @@ nest_asyncio.apply()
 notes = ['\U0001f3b5', '\U0001f3b6']
 
 async def update_activity(timer):
-    n = 3
-    for i in range(n):
+    artist = 3
+    song = 3
+    album = 3
+    progress = 3
+
+    #artist
+    for i in range(artist):
         oldTimer = timer
         await asyncio.sleep(0.5)
         timer = spotify.get_milliseconds()
@@ -30,14 +35,39 @@ async def update_activity(timer):
             activity.clear_status()
         else:
             await set_artists_as_activity()
-    for i in range(n):
+
+    #song name
+    for i in range(song):
         oldTimer = timer
         await asyncio.sleep(0.5)
         timer = spotify.get_milliseconds()
         if(math.fabs(oldTimer - timer) < 100):
             activity.clear_status()
         else:
-            await set_track_as_activity()
+            await set_artists_as_activity()
+
+    #album
+    for i in range(album):
+        oldTimer = timer
+        await asyncio.sleep(0.5)
+        timer = spotify.get_milliseconds()
+        if(math.fabs(oldTimer - timer) < 100):
+            activity.clear_status()
+        else:
+            await set_album_as_activity()
+
+
+
+    #progress
+    for i in range(progress):
+        oldTimer = timer
+        await asyncio.sleep(0.5)
+        timer = spotify.get_milliseconds()
+        if(math.fabs(oldTimer - timer) < 100):
+            activity.clear_status()
+        else:
+            await set_progress_as_activity()
+    
     return timer
 
 async def thread():
@@ -58,6 +88,17 @@ async def set_track_as_activity():
         activity.set_status(presence, notes[1])
     else:
         activity.clear_status()
+
+async def set_album_as_activity():
+    presence = spotify.get_album_name()
+    if(presence != None):
+        activity.set_status(presence, notes[1])
+    else:
+        activity.clear_status()
+
+async def set_progress_as_activity():
+    presence = spotify.get_progress() + " / " + spotify.get_duration()
+    activity.set_status(presence, notes[1])
     
 
 async def set_artists_as_activity():
