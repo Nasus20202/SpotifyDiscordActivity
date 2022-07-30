@@ -1,5 +1,3 @@
-from asyncio.subprocess import Process
-from asyncio.tasks import sleep
 import asyncio
 import os
 import requests
@@ -7,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def refresh_access_token():
+async def refresh_access_token():
     refresh_token = os.environ["SPOTIFY_REFRESH_TOKEN"]
     params = (
         ('refresh_token', refresh_token),
@@ -18,10 +16,16 @@ def refresh_access_token():
         print("New token generated")
     except:
         print("Cannot refresh the token!")
-        asyncio.sleep(1)
+        await asyncio.sleep(1)
         refresh_access_token()
 
-refresh_access_token()
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
+task = loop.create_task(refresh_access_token())
+try:
+    loop.run_until_complete(task)
+except asyncio.CancelledError:
+    pass
 
 def __milis_to_time__(miliseconds):
     minutes = miliseconds // 60000

@@ -77,7 +77,7 @@ async def thread():
     while True:
         timer = await update_activity(timer)
         if(i == 100):
-            spotify.refresh_access_token()
+            await spotify.refresh_access_token()
             i = 0
         i = i + 1
         
