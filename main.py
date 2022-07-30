@@ -21,17 +21,18 @@ nest_asyncio.apply()
 notes = ['\U0001f3b5', '\U0001f3b6']
 
 async def update_activity(timer):
-    artist = 3
-    song = 3
-    album = 3
-    progress = 3
+    artist = 2
+    song = 2
+    album = 0
+    progress = 0
+    sleep_time = 1.5
 
     #artist
     for i in range(artist):
         oldTimer = timer
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(sleep_time)
         timer = spotify.get_milliseconds()
-        if(math.fabs(oldTimer - timer) < 100):
+        if(math.fabs(oldTimer - timer) < 200):
             activity.clear_status()
         else:
             await set_artists_as_activity()
@@ -39,9 +40,9 @@ async def update_activity(timer):
     #song name
     for i in range(song):
         oldTimer = timer
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(sleep_time)
         timer = spotify.get_milliseconds()
-        if(math.fabs(oldTimer - timer) < 100):
+        if(math.fabs(oldTimer - timer) < 200):
             activity.clear_status()
         else:
             await set_track_as_activity()
@@ -49,9 +50,9 @@ async def update_activity(timer):
     #album
     for i in range(album):
         oldTimer = timer
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(sleep_time)
         timer = spotify.get_milliseconds()
-        if(math.fabs(oldTimer - timer) < 100):
+        if(math.fabs(oldTimer - timer) < 200):
             activity.clear_status()
         else:
             await set_album_as_activity()
@@ -61,9 +62,9 @@ async def update_activity(timer):
     #progress
     for i in range(progress):
         oldTimer = timer
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(sleep_time)
         timer = spotify.get_milliseconds()
-        if(math.fabs(oldTimer - timer) < 100):
+        if(math.fabs(oldTimer - timer) < 200):
             activity.clear_status()
         else:
             await set_progress_as_activity()
