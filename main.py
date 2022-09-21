@@ -32,7 +32,9 @@ async def update_activity(timer):
         oldTimer = timer
         await asyncio.sleep(sleep_time)
         timer = spotify.get_milliseconds()
-        if(math.fabs(oldTimer - timer) < 200 or timer < 0):
+        if(timer == -1):
+            return
+        if(math.fabs(oldTimer - timer) < 200):
             activity.clear_status()
         else:
             await set_artists_as_activity()
@@ -42,7 +44,9 @@ async def update_activity(timer):
         oldTimer = timer
         await asyncio.sleep(sleep_time)
         timer = spotify.get_milliseconds()
-        if(math.fabs(oldTimer - timer) < 200 or timer < 0):
+        if(timer == -1):
+            return
+        if(math.fabs(oldTimer - timer) < 200):
             activity.clear_status()
         else:
             await set_track_as_activity()
@@ -52,7 +56,9 @@ async def update_activity(timer):
         oldTimer = timer
         await asyncio.sleep(sleep_time)
         timer = spotify.get_milliseconds()
-        if(math.fabs(oldTimer - timer) < 200 or timer < 0):
+        if(timer == -1):
+            return
+        if(math.fabs(oldTimer - timer) < 200):
             activity.clear_status()
         else:
             await set_album_as_activity()
@@ -64,7 +70,9 @@ async def update_activity(timer):
         oldTimer = timer
         await asyncio.sleep(sleep_time)
         timer = spotify.get_milliseconds()
-        if(math.fabs(oldTimer - timer) < 200 or timer < 0):
+        if(timer == -1):
+            return
+        if(math.fabs(oldTimer - timer) < 200):
             activity.clear_status()
         else:
             await set_progress_as_activity()
