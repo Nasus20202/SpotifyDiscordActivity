@@ -86,27 +86,27 @@ def get_album_name():
 def get_milliseconds():
     data = get_current_spotify_info()
     if(data[0]!=200):
-        return 0
+        return -1
     else:
         return data[1]["progress_ms"]
 
 def get_duration_millis():
     data = get_current_spotify_info()
     if(data[0]!=200):
-        return 0
+        return -1
     else:
         return data[1]["item"]["duration_ms"]
 
 def get_progress():
     data = get_current_spotify_info()
     if(data[0]!=200):
-        return
+        return -1
     return __milis_to_time__(data[1]["progress_ms"])
 
 def get_duration():
     data = get_current_spotify_info()
     if(data[0]!=200):
-        return
+        return -1
     return __milis_to_time__(data[1]["item"]["duration_ms"])
     
 
