@@ -75,7 +75,10 @@ async def thread():
     timer = spotify.get_milliseconds()
     i = 0
     while True:
-        timer = await update_activity(timer)
+        try:
+            timer = await update_activity(timer)
+        except Exception as e:
+            print(str(e))
         if(i == 100):
             await spotify.refresh_access_token()
             i = 0
