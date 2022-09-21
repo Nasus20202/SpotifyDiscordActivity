@@ -33,7 +33,7 @@ async def update_activity(timer):
         await asyncio.sleep(sleep_time)
         timer = spotify.get_milliseconds()
         if(timer == -1):
-            return
+            return 0
         if(math.fabs(oldTimer - timer) < 200):
             activity.clear_status()
         else:
@@ -45,7 +45,7 @@ async def update_activity(timer):
         await asyncio.sleep(sleep_time)
         timer = spotify.get_milliseconds()
         if(timer == -1):
-            return
+            return 0
         if(math.fabs(oldTimer - timer) < 200):
             activity.clear_status()
         else:
@@ -57,7 +57,7 @@ async def update_activity(timer):
         await asyncio.sleep(sleep_time)
         timer = spotify.get_milliseconds()
         if(timer == -1):
-            return
+            return 0
         if(math.fabs(oldTimer - timer) < 200):
             activity.clear_status()
         else:
@@ -71,7 +71,7 @@ async def update_activity(timer):
         await asyncio.sleep(sleep_time)
         timer = spotify.get_milliseconds()
         if(timer == -1):
-            return
+            return 0
         if(math.fabs(oldTimer - timer) < 200):
             activity.clear_status()
         else:
