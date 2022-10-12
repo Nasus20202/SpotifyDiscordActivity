@@ -16,7 +16,7 @@ def set_status_without_emoji(status):
     if(current_status == status):
         return
     current_status = status
-    data = '{"custom_status":{"text":"'+str(status)+'"}}'
+    data = '{"custom_status":{"text":"'+str(status.replace('"', "'"))+'"}}'
     try:
         response = requests.patch('https://discord.com/api/v9/users/@me/settings', headers=headers, data=data, timeout=3)
     except:
@@ -27,7 +27,7 @@ def set_status(status, emoji):
     if(status == current_status):
         return
     current_status = status
-    data = '{"custom_status":{"text":"'+str(status)+'", "emoji_name":"'+emoji+'"}}'
+    data = '{"custom_status":{"text":"'+str(status.replace('"', "'"))+'", "emoji_name":"'+emoji+'"}}'
     try:
         response = requests.patch('https://discord.com/api/v9/users/@me/settings', headers=headers, data=data.encode('utf-8'), timeout=3)
     except:
